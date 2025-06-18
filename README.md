@@ -49,6 +49,8 @@ VLSI-Stick-Diagram-Layout-Internship
 ---
 
 ### 📄 Report
-The corresponding LaTeX report summarizes the entire workflow, including diagrams, layouts, simulation results, and methodology.
+The corresponding LaTeX report summarizes the entire workflow, including diagrams, layouts, simulation results, and methodology.  
+
+[Internship Report](https://drive.google.com/file/d/1XE4tXopADcODvvVmT1WFogu72GVF1bqg/view?usp=drivesdk)
 
 
