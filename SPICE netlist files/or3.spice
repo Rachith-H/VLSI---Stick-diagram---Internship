@@ -1,0 +1,40 @@
+* SPICE3 file created from or3.ext - technology: scmos
+
+.model pfet pmos (LEVEL=1 VTO=-0.7 KP=25u LAMBDA=0.02)
+.model nfet nmos (LEVEL=1 VTO=0.7 KP=50u LAMBDA=0.02)
+
+.option scale=1u
+
+M1000 a_11_5# in3 a_3_n20# vdd pfet w=8 l=2
++  ad=32p pd=16u as=48p ps=28u
+M1001 out a_3_n20# vdd vdd pfet w=8 l=2
++  ad=48p pd=28u as=32p ps=16u
+M1002 a_3_n20# in2 gnd Gnd nfet w=4 l=2
++  ad=16p pd=12u as=16p ps=12u
+M1003 vdd in1 a_21_5# vdd pfet w=8 l=2
++  ad=32p pd=16u as=32p ps=16u
+M1004 a_21_5# in2 a_11_5# vdd pfet w=8 l=2
++  ad=32p pd=16u as=32p ps=16u
+M1005 out a_3_n20# gnd Gnd nfet w=4 l=2
++  ad=24p pd=20u as=16p ps=12u
+M1006 gnd in3 a_3_n20# Gnd nfet w=4 l=2
++  ad=16p pd=12u as=24p ps=20u
+M1007 gnd in1 a_3_n20# Gnd nfet w=4 l=2
++  ad=16p pd=12u as=16p ps=12u
+C0 out 0 4.324f 
+C1 a_3_n20# 0 16.194f 
+C2 in1 0 7.922f 
+C3 in2 0 7.922f 
+C4 in3 0 7.922f 
+
+v1 vdd gnd 1.8
+vina in1 gnd pulse(0 1.8 0n 1n 1n 50n 100n)
+vinb in2 gnd pulse(0 1.8 0n 1n 1n 100n 200n)
+vinc in3 gnd pulse(0 1.8 0n 1n 1n 200n 400n)
+
+.tran 1n 400n
+.control
+run 
+plot v(in1)+2 v(in2)+4 v(in3)+6 v(out)
+.endc
+.end

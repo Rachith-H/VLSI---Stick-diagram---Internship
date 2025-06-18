@@ -1,0 +1,63 @@
+* SPICE3 file created from Half.ext - technology: scmos
+
+.model pfet pmos (LEVEL=1 VTO=-0.7 KP=25u LAMBDA=0.02)
+.model nfet nmos (LEVEL=1 VTO=0.7 KP=50u LAMBDA=0.02)
+
+.option scale=1u
+
+M1000 a_n27_n49# in2 gnd Gnd nfet w=4 l=2
++  ad=16p pd=12u as=16p ps=12u
+M1001 gnd in2 a_29_n49# Gnd nfet w=4 l=2
++  ad=16p pd=12u as=16p ps=12u
+M1002 a_n39_n52# in2 vdd vdd pfet w=8 l=2
++  ad=32p pd=16u as=32p ps=16u
+M1003 a_21_10# a_11_n49# sum vdd pfet w=8 l=2
++  ad=56p pd=30u as=32p ps=16u
+M1004 vdd a_n39_n52# carry vdd pfet w=8 l=2
++  ad=32p pd=16u as=48p ps=28u
+M1005 a_n39_n52# in1 a_n27_n49# Gnd nfet w=4 l=2
++  ad=24p pd=20u as=16p ps=12u
+M1006 a_29_n49# in1 sum Gnd nfet w=4 l=2
++  ad=16p pd=12u as=24p ps=20u
+M1007 a_11_n49# in1 gnd Gnd nfet w=4 l=2
++  ad=24p pd=20u as=16p ps=12u
+M1008 sum a_11_n49# a_49_n49# Gnd nfet w=4 l=2
++  ad=28p pd=22u as=16p ps=12u
+M1009 a_11_n49# in1 vdd vdd pfet w=8 l=2
++  ad=48p pd=28u as=32p ps=16u
+M1010 vdd in1 a_21_10# vdd pfet w=8 l=2
++  ad=32p pd=16u as=48p ps=28u
+M1011 gnd a_n39_n52# carry Gnd nfet w=4 l=2
++  ad=16p pd=12u as=24p ps=20u
+M1012 a_21_10# in2 vdd vdd pfet w=8 l=2
++  ad=32p pd=16u as=32p ps=16u
+M1013 a_49_n49# a_n7_n49# gnd Gnd nfet w=4 l=2
++  ad=16p pd=12u as=16p ps=12u
+M1014 gnd in2 a_n7_n49# Gnd nfet w=4 l=2
++  ad=16p pd=12u as=24p ps=20u
+M1015 vdd in1 a_n39_n52# vdd pfet w=8 l=2
++  ad=48p pd=28u as=32p ps=16u
+M1016 vdd in2 a_n7_n49# vdd pfet w=8 l=2
++  ad=32p pd=16u as=48p ps=28u
+M1017 sum a_n7_n49# a_21_10# vdd pfet w=8 l=2
++  ad=32p pd=16u as=32p ps=16u
+C0 vdd sum 3.948f
+C1 sum 0 23.124f 
+C2 a_21_10# 0 7.52f 
+C3 carry 0 11.092f 
+C4 a_11_n49# 0 33.506f 
+C5 a_n7_n49# 0 32.934f 
+C6 in1 0 49.606f 
+C7 in2 0 52.614f 
+C8 a_n39_n52# 0 28.66f 
+
+v1 vdd gnd 1.8
+vina in1 gnd pulse(0 1.8 0n 1n 1n 50n 100n)
+vinb in2 gnd pulse(0 1.8 0n 1n 1n 100n 200n)
+
+.tran 1n 400n
+.control
+run 
+plot v(sum)+2 v(in1)+4 v(in2)+6 v(carry)
+.endc
+.end

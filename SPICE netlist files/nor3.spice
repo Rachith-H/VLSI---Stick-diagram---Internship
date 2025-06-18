@@ -1,0 +1,36 @@
+* SPICE3 file created from /home/rachith/Desktop/Layouts/nor3.ext - technology: scmos
+
+
+.model pfet pmos (LEVEL=1 VTO=-0.7 KP=25u LAMBDA=0.02)
+.model nfet nmos (LEVEL=1 VTO=0.7 KP=50u LAMBDA=0.02)
+
+.option scale=1u
+
+M1000 gnd in2 out Gnd nfet w=4 l=2
++  ad=16p pd=12u as=16p ps=12u
+M1001 a_10_5# in1 vdd vdd pfet w=8 l=2
++  ad=32p pd=16u as=48p ps=28u
+M1002 out in3 a_20_5# vdd pfet w=8 l=2
++  ad=48p pd=28u as=32p ps=16u
+M1003 out in1 gnd Gnd nfet w=4 l=2
++  ad=16p pd=12u as=24p ps=20u
+M1004 a_20_5# in2 a_10_5# vdd pfet w=8 l=2
++  ad=32p pd=16u as=32p ps=16u
+M1005 out in3 gnd Gnd nfet w=4 l=2
++  ad=24p pd=20u as=16p ps=12u
+C0 out 0 7.896f 
+C1 in3 0 7.922f 
+C2 in2 0 7.922f 
+C3 in1 0 7.922f 
+
+v1 vdd gnd 1.8
+vina in1 gnd pulse(0 1.8 0n 1n 1n 50n 100n)
+vinb in2 gnd pulse(0 1.8 0n 1n 1n 100n 200n)
+vinc in3 gnd pulse(0 1.8 0n 1n 1n 200n 400n)
+
+.tran 1n 400n
+.control
+run 
+plot v(in1)+2 v(in2)+4 v(in3)+6 v(out)
+.endc
+.end

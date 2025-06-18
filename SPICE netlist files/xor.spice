@@ -1,0 +1,49 @@
+* SPICE3 file created from xor.ext - technology: scmos
+
+.model pfet pmos (LEVEL=1 VTO=-0.7 KP=25u LAMBDA=0.02)
+.model nfet nmos (LEVEL=1 VTO=0.7 KP=50u LAMBDA=0.02)
+
+.option scale=1u
+
+M1000 gnd in2 a_29_n49# Gnd nfet w=4 l=2
++  ad=16p pd=12u as=16p ps=12u
+M1001 a_21_10# a_11_n49# out vdd pfet w=8 l=2
++  ad=56p pd=30u as=32p ps=16u
+M1002 a_29_n49# in1 out Gnd nfet w=4 l=2
++  ad=16p pd=12u as=24p ps=20u
+M1003 a_11_n49# in1 gnd Gnd nfet w=4 l=2
++  ad=24p pd=20u as=16p ps=12u
+M1004 out a_11_n49# a_49_n49# Gnd nfet w=4 l=2
++  ad=28p pd=22u as=16p ps=12u
+M1005 a_11_n49# in1 vdd vdd pfet w=8 l=2
++  ad=48p pd=28u as=32p ps=16u
+M1006 vdd in1 a_21_10# vdd pfet w=8 l=2
++  ad=32p pd=16u as=48p ps=28u
+M1007 a_21_10# in2 vdd vdd pfet w=8 l=2
++  ad=32p pd=16u as=32p ps=16u
+M1008 a_49_n49# a_n7_n49# gnd Gnd nfet w=4 l=2
++  ad=16p pd=12u as=16p ps=12u
+M1009 gnd in2 a_n7_n49# Gnd nfet w=4 l=2
++  ad=16p pd=12u as=24p ps=20u
+M1010 vdd in2 a_n7_n49# vdd pfet w=8 l=2
++  ad=32p pd=16u as=48p ps=28u
+M1011 out a_n7_n49# a_21_10# vdd pfet w=8 l=2
++  ad=32p pd=16u as=32p ps=16u
+C0 out vdd 3.948f
+C1 out 0 22.936f 
+C2 a_21_10# 0 7.52f 
+C3 a_11_n49# 0 33.506f 
+C4 a_n7_n49# 0 32.934f 
+C5 in1 0 33.404f 
+C6 in2 0 36.412f 
+
+v1 vdd gnd 1.8
+vina in1 gnd pulse(0 1.8 0n 1n 1n 50n 100n)
+vinb in2 gnd pulse(0 1.8 0n 1n 1n 100n 200n)
+
+.tran 1n 400n
+.control
+run 
+plot v(in1)+2 v(in2)+4 v(out)
+.endc
+.end

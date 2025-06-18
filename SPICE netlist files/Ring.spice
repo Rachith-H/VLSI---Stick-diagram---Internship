@@ -1,0 +1,31 @@
+* SPICE3 file created from Ring.ext - technology: scmos
+
+.model pfet pmos (LEVEL=1 VTO=-0.7 KP=25u LAMBDA=0.02)
+.model nfet nmos (LEVEL=1 VTO=0.7 KP=50u LAMBDA=0.02)
+
+.option scale=1u
+
+M1000 a_27_0# a_3_0# vdd vdd pfet w=8 l=2
++  ad=48p pd=28u as=48p ps=28u
+M1001 a_3_0# out vdd vdd pfet w=8 l=2
++  ad=48p pd=28u as=48p ps=28u
+M1002 out a_27_0# vdd vdd pfet w=8 l=2
++  ad=48p pd=28u as=48p ps=28u
+M1003 out a_27_0# gnd Gnd nfet w=4 l=2
++  ad=24p pd=20u as=24p ps=20u
+M1004 a_3_0# out gnd Gnd nfet w=4 l=2
++  ad=24p pd=20u as=24p ps=20u
+M1005 a_27_0# a_3_0# gnd Gnd nfet w=4 l=2
++  ad=24p pd=20u as=24p ps=20u
+C0 a_27_0# 0 15.16f 
+C1 a_3_0# 0 15.16f 
+C2 out 0 43.548f 
+
+v1 vdd gnd 1.8
+
+.tran 1n 100n
+.control
+run 
+plot v(out)
+.endc
+.end
