@@ -1,0 +1,48 @@
+timestamp 1749626857
+version 8.3
+tech scmos
+style lambda=1.0(scna20_orb)
+scale 1000 1 100
+resistclasses 26670 59550 23860 19690 27260 2000000 49 26 2505830
+node "a_49_n49#" 53 0 49 -49 ndiff 32 24 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+node "a_29_n49#" 53 0 29 -49 ndiff 32 24 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+node "gnd!" 2445 8836 -9 -58 ppc 64 48 160 160 0 0 0 0 0 0 0 0 380 198 0 0 0 0
+node "out" 230 22936 21 -49 ndc 52 42 64 32 0 0 0 0 0 0 0 0 652 334 0 0 0 0
+node "a_21_10#" 594 7520 21 10 pdc 0 0 168 90 0 0 0 0 0 0 0 0 264 140 0 0 0 0
+node "a_11_n49#" 970 33506 11 -49 ndiff 24 20 48 28 166 158 0 0 0 0 0 0 480 256 0 0 0 0
+node "a_n7_n49#" 967 32934 -7 -49 ndc 24 20 48 28 154 152 0 0 0 0 0 0 456 236 0 0 0 0
+node "in1" 1742 33404 9 -51 p 0 0 0 0 304 302 0 0 0 0 0 0 84 50 0 0 0 0
+node "in2" 1742 36412 -1 -51 p 0 0 0 0 304 302 0 0 0 0 0 0 164 90 0 0 0 0
+node "vdd!" 9079 0 -9 8 nw 160 160 128 64 0 0 0 0 0 0 0 0 428 222 0 0 1925 204
+cap "a_n7_n49#" "out" 240
+cap "a_11_n49#" "a_21_10#" 240
+cap "vdd!" "a_21_10#" 1128
+cap "a_21_10#" "in1" 240
+cap "in2" "a_11_n49#" 480
+cap "a_n7_n49#" "a_21_10#" 240
+cap "vdd!" "in2" 624
+cap "vdd!" "a_11_n49#" 688
+cap "in2" "in1" 480
+cap "a_11_n49#" "in1" 480
+cap "in2" "a_n7_n49#" 480
+cap "a_n7_n49#" "a_11_n49#" 480
+cap "vdd!" "in1" 624
+cap "vdd!" "a_n7_n49#" 688
+cap "a_n7_n49#" "in1" 480
+cap "in2" "out" 240
+cap "a_11_n49#" "out" 240
+cap "vdd!" "out" 3948
+cap "out" "in1" 240
+cap "in2" "a_21_10#" 240
+device mosfet nfet 57 -49 58 -48 2 4 "Gnd!" "a_11_n49#" 4 0 "a_49_n49#" 4 16,12 "out" 4 28,22
+device mosfet nfet 47 -49 48 -48 2 4 "Gnd!" "a_n7_n49#" 4 0 "gnd!" 4 16,12 "a_49_n49#" 4 16,12
+device mosfet nfet 37 -49 38 -48 2 4 "Gnd!" "in2" 4 0 "a_29_n49#" 4 16,12 "gnd!" 4 16,12
+device mosfet nfet 27 -49 28 -48 2 4 "Gnd!" "in1" 4 0 "out" 4 24,20 "a_29_n49#" 4 16,12
+device mosfet nfet 9 -49 10 -48 2 4 "Gnd!" "in1" 4 0 "gnd!" 4 16,12 "a_11_n49#" 4 24,20
+device mosfet nfet -1 -49 0 -48 2 4 "Gnd!" "in2" 4 0 "a_n7_n49#" 4 24,20 "gnd!" 4 16,12
+device mosfet pfet 57 10 58 11 2 8 "vdd!" "a_11_n49#" 4 0 "out" 8 32,16 "a_21_10#" 8 56,30
+device mosfet pfet 47 10 48 11 2 8 "vdd!" "a_n7_n49#" 4 0 "a_21_10#" 8 32,16 "out" 8 32,16
+device mosfet pfet 37 10 38 11 2 8 "vdd!" "in2" 4 0 "vdd!" 8 32,16 "a_21_10#" 8 32,16
+device mosfet pfet 27 10 28 11 2 8 "vdd!" "in1" 4 0 "a_21_10#" 8 48,28 "vdd!" 8 32,16
+device mosfet pfet 9 10 10 11 2 8 "vdd!" "in1" 4 0 "vdd!" 8 32,16 "a_11_n49#" 8 48,28
+device mosfet pfet -1 10 0 11 2 8 "vdd!" "in2" 4 0 "a_n7_n49#" 8 48,28 "vdd!" 8 32,16
